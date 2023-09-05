@@ -1,0 +1,20 @@
+// First it to create the video loopbacks 
+
+sudo modprobe v4l2loopback exclusive_caps=0,0 video_nr=2,3,4
+
+// In case you want to check:
+
+v4l2-ctl --list-devices
+
+// Then run the C code (adjust device numbers if needed in it):
+
+sudo ./flir8i/flir8i
+
+// Now the camera should be streaming to the virtual loopbacks
+// To see it using mplayer:
+
+mplayer tv:// -tv driver=v4l2:device=/dev/video2
+
+
+
+
